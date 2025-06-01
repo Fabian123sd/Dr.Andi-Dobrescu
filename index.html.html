@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Andi Dobrescu - Stomatolog Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00a3a8;
+            --primary-dark: #00878c;
+            --secondary: #f8f4e9;
+            --accent: #ff7e5f;
+            --dark: #333333;
+            --light: #ffffff;
+            --gray: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        /* Header modern */
+        header {
+            background-color: var(--light);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 163, 168, 0.3);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero section modernă */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .secondary-button:hover {
+            background-color: white;
+            color: var(--dark);
+        }
+        
+        /* Sectiune servicii */
+        .services {
+            padding: 100px 5%;
+            background-color: var(--secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--dark);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        /* Sectiune despre noi */
+        .about {
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            background-color: var(--light);
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .about-features {
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        /* Sectiune doctor */
+        .doctor {
+            padding: 100px 5%;
+            background-color: var(--gray);
+            text-align: center;
+        }
+        
+        .doctor-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .doctor-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .doctor-image {
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .doctor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .doctor-card:hover .doctor-image img {
+            transform: scale(1.05);
+        }
+        
+        .doctor-info {
+            padding: 30px;
+        }
+        
+        .doctor-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        .doctor-info p.specialty {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .doctor-info p.bio {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .doctor-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .doctor-social a {
+            color: var(--dark);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .doctor-social a:hover {
+            color: var(--primary);
+        }
+        
+        /* Sectiune testimoniale */
+        .testimonials {
+            padding: 100px 5%;
+            background-color: var(--secondary);
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin: 0 20px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.3;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Sectiune programare */
+        .appointment {
+            padding: 100px 5%;
+            background: linear-gradient(rgba(0, 163, 168, 0.9), rgba(0, 163, 168, 0.9)), url('https://images.unsplash.com/photo-1564420228450-d4fca2b60b9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .appointment h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .appointment p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+        
+        .appointment-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        /* Footer modern */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 5% 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+        
+        .footer-contact-info {
+            list-style: none;
+        }
+        
+        .footer-contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .footer-contact-info i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                padding: 10px 5%;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .doctor-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 15px 20px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .appointment-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header modern -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo">
+                 <img src="mat.png" alt="Dr. Andi Dobrescu Logo">
+                <div class="logo-text">Dr. Andi <span>Dobrescu</span></div>
+            </div>
+            
+            <nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul id="navMenu">
+                    <li><a href="#home">Acasă</a></li>
+                    <li><a href="#services">Servicii</a></li>
+                    <li><a href="#about">Despre mine</a></li>
+                    <li><a href="#doctor">Profil</a></li>
+                    <li><a href="#testimonials">Testimoniale</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#appointment" class="cta-button">Programare</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Excelență în stomatologie, dedicare pentru fiecare zâmbet</h1>
+            <p>Ofer servicii stomatologice de cea mai înaltă calitate, personalizate pentru nevoile fiecărui pacient.</p>
+            <div class="hero-buttons">
+                <a href="#appointment" class="cta-button">Programează-te acum</a>
+                <a href="#services" class="secondary-button">Serviciile mele</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Servicii section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Serviciile mele</h2>
+            <p>Ofer o gamă completă de servicii stomatologice, folosind cele mai moderne tehnologii și materiale.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tooth"></i>
+                </div>
+                <h3>Ortodonție</h3>
+                <p>Tratamente ortodontice cu aparate dentare fixe sau mobile, inclusiv Invisalign pentru corectarea discretă a dinților.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-teeth"></i>
+                </div>
+                <h3>Implantologie</h3>
+                <p>Înlocuirea dinților pierduți cu implanturi dentare de calitate superioară, cu garanție pe termen lung.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-teeth-open"></i>
+                </div>
+                <h3>Estetică dentară</h3>
+                <p>Fațete dentare, albire profesională și alte proceduri pentru un zâmbet perfect și natural.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-toothbrush"></i>
+                </div>
+                <h3>Igienizare</h3>
+                <p>Curățare profesională, detartraj și îndepărtarea plăcii bacteriene pentru sănătatea gingiilor.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-baby"></i>
+                </div>
+                <h3>Stomatologie pediatrică</h3>
+                <p>Servicii specializate pentru copii, într-un mediu prietenos și lipsit de stres.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-x-ray"></i>
+                </div>
+                <h3>Radiologie digitală</h3>
+                <p>Diagnostic precis cu ajutorul tehnologiei digitale de ultimă generație cu expunere minimă la radiații.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Despre noi section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>Despre cabinetul meu</h2>
+                <p>Cabinetul meu stomatologic este un spațiu modern, dedicat oferirii celei mai bune îngrijiri dentare într-un mediu relaxant și prietenos.</p>
+                <p>Cu peste 10 ani de experiență în domeniu, utilizez cele mai recente tehnologii și tehnici pentru a asigura tratamente de cea mai înaltă calitate.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h4>Certificări internaționale</h4>
+                            <p>Certificat și cu participări anuale la cursuri de perfecționare în domeniu.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Standarde ridicate de igienă</h4>
+                            <p>Utilizez strict protocoale de dezinfectare și sterilizare pentru siguranța pacienților.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-comment-medical"></i>
+                        </div>
+                        <div>
+                            <h4>Consultanță personalizată</h4>
+                            <p>Fiecare pacient beneficiază de un plan de tratament adaptat nevoilor individuale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cabinet stomatologic">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sectiune doctor -->
+    <section class="doctor" id="doctor">
+        <div class="section-title">
+            <h2>Despre mine</h2>
+            <p>Specialist dedicat cu experiență vastă în diverse specialități stomatologice.</p>
+        </div>
+        
+        <div class="doctor-container">
+            <div class="doctor-card">
+                <div class="doctor-image">
+                    <!-- Înlocuiește cu propria ta imagine -->
+                    <img src="ops.png" alt="Dr. Andi Dobrescu">
+                </div>
+                <div class="doctor-info">
+                    <h3>Dr. Andi Dobrescu</h3>
+                    <p class="specialty">Stomatolog Specialist | Implantologie | Ortodonție</p>
+                    <p class="bio">Absolvent al Facultății de Medicină Dentară din Campul lung cu distincție, am urmat numeroase cursuri de specializare în țară. Specializările mele principale sunt implantologia și ortodonția, dar ofer o gamă completă de servicii stomatologice pentru întreaga familie.</p>
+                    <p class="bio">Cred într-o abordare holistică a stomatologiei, unde comfortul și încrederea pacientului sunt la fel de importante ca rezultatele clinice. Fiecare tratament este planificat individual, ținând cont de nevoile și așteptările fiecărui pacient.</p>
+                    <div class="doctor-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimoniale section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-title">
+            <h2>Părerile pacienților</h2>
+            <p>Descoperă experiențele pacienților mei și de ce mă recomandă.</p>
+        </div>
+        
+        <div class="testimonials-slider">
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    Am fost extrem de mulțumit de tratamentul ortodontic primit la cabinetul Dr. Dobrescu. A fost foarte profesionist și răbdător, explicându-mi tot procesul în detaliu. Rezultatul a depășit așteptările mele!
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ana M.">
+                    </div>
+                    <div class="author-info">
+                        <h4>Ana M.</h4>
+                        <p>Pacient Ortodontie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Programare section -->
+    <section class="appointment" id="appointment">
+        <h2>Programează-te la o consultație</h2>
+        <p>Completează formularul de mai jos și te voi contacta în cel mai scurt timp pentru a stabili data și ora exactă.</p>
+        
+        <form class="appointment-form">
+            <div class="form-group">
+                <label for="name">Nume complet</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="service">Serviciu dorit</label>
+                <select id="service" name="service" required>
+                    <option value="">Selectează un serviciu...</option>
+                    <option value="consultatie">Consultatie</option>
+                    <option value="ortodontie">Ortodontie</option>
+                    <option value="implantologie">Implantologie</option>
+                    <option value="estetica">Estetică dentară</option>
+                    <option value="igienizare">Igienizare</option>
+                    <option value="pediatrie">Stomatologie pediatrică</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Data preferată</label>
+                <input type="date" id="date" name="date">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Mesaj suplimentar</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            
+            <button type="submit" class="cta-button">Trimite cererea</button>
+        </form>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Despre cabinet</h3>
+                <p>Cabinet stomatologic modern, dedicat oferirii celei mai bune îngrijiri dentare într-un mediu relaxant și prietenos.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Link-uri rapide</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Acasă</a></li>
+                    <li><a href="#services">Servicii</a></li>
+                    <li><a href="#about">Despre mine</a></li>
+                    <li><a href="#doctor">Profil</a></li>
+                    <li><a href="#testimonials">Testimoniale</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Servicii</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Ortodonție</a></li>
+                    <li><a href="#">Implantologie</a></li>
+                    <li><a href="#">Estetică dentară</a></li>
+                    <li><a href="#">Igienizare</a></li>
+                    <li><a href="#">Stomatologie pediatrică</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul class="footer-contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Campulung Muscel</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+40 76 627 7678</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@drandidobrescu.ro</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Luni-Vineri: 09:00 - 19:00<br>Sâmbătă: 10:00 - 14:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Dr. Andi Dobrescu - Toate drepturile rezervate</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled
